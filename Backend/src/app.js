@@ -5,6 +5,8 @@ const express = require('express');
 //Importar o cors
 const cors = require('cors');
 
+const { errors } = require('celebrate');
+
 //Importar variáveis/rotas
 //./routes porque é um arquivo 
 const routes = require('./routes');
@@ -17,6 +19,6 @@ app.use(cors());
 //Express vai até o corpo da requisição e converte o json em um objeto do javascript (se torna entendível pela aplicação) 
 app.use(express.json());
 app.use(routes);
+app.use(errors());
 
-//aplicaçãp "ouve" a porta 3333 -> localhost:3333 = acessa a sua aplicação
-app.listen(3333);
+module.exports = app;
